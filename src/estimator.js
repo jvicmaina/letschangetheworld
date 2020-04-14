@@ -71,4 +71,4 @@ return{
        }
     }
 
-//export default covid19ImpactEstimator;
+covid19ImpactEstimatorImpactEstimator(data);
