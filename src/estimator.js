@@ -87,13 +87,4 @@ return{
 
 export default covid19ImpactEstimator;
 
-        severeImpact.currentlyInfected + "is" ; reportedCases* 50;
-        severeImpact.infectionsByRequestedTime +"is"; currentlyInfected *1024;
-        severeImpact.severeCasesByRequestedTime +"is";15 % infectionsByRequestedTime;
-        severeImpact.hospitalBedsByRequestedTime + "is" ;5 % totalHospitalBeds ;
-        severeImpact.hospitalBedsByRequestedTime + "is" ;10 % totalHospitalBeds ;
-        severeImpact.casesForVentilatorsByRequestedTime  +"is"; 2 % infectionsByRequestedTime;
-     }   // your severe case estimation
-    }
-}
-
+     
