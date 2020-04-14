@@ -1,8 +1,8 @@
-function computationData()=>{
+function computationData(periodType,impact,severeImpact)=>{
 
 }
 
-
+import covid19ImpactEstimator;
 export default 
  const data: {
         {   region: {    
