@@ -1,7 +1,11 @@
 function computationData()=>{
 
 }
-
+let form = document.getElementById("user-form");
+form.addEventListener(type='submit', event => {
+    let user = form.elements['user'];
+});
+});
 
 export default 
  const data: {
