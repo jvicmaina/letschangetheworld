@@ -17,8 +17,8 @@ dollarsInFlight= dollarsInFlightForEconomyX(avgDailyIncomeInUSD,data.timeToElaps
        //infections here being infections by requested time
      const infectionsAtTimeX=(currentlyInfected,timeToLapse)=>{
 
-        infectionsByRequestedTime=impact.currentlyInfected *(Math.pow(2,Math.trunc(timeToElapse/3)))
-        severeInfectionsByRequestedTime=severeImpact.currentlyInfected *(Math.pow(2,Math.trunc(timeToElapse/3)))
+        infectionsByRequestedTime=currentlyInfected.impact *(Math.pow(2,Math.trunc(timeToElapse/3)))
+        severeInfectionsByRequestedTime=currentlyInfected.severeImpact *(Math.pow(2,Math.trunc(timeToElapse/3)))
         
         return {
            impact:infectionsByRequestedTime,
@@ -27,8 +27,8 @@ dollarsInFlight= dollarsInFlightForEconomyX(avgDailyIncomeInUSD,data.timeToElaps
          }
       
          const severeAtTimeX=(infectionsByRequestedTime)=>{
-        severeCasesByRequestedTime= impact.infectionsByRequestedTime *(0.15)
-        severeCasesByRequestedTime= severeImpact.infectionsByRequestedTime *(0.15)
+        severeCasesByRequestedTime= infectionsByRequestedTime.impact *(0.15)
+        severeCasesByRequestedTime= infectionsByRequestedTime.severeImpact *(0.15)
          return{
             impact:severeCasesByRequestedTime*0.15,
             severeImpact:severeCasesByRequestedTime*0.15
@@ -37,8 +37,8 @@ dollarsInFlight= dollarsInFlightForEconomyX(avgDailyIncomeInUSD,data.timeToElaps
       //const severeAtTimeX
      // severeCasesByRequestedTime=(0.15*infectionsByRequestedTime)
       const bedsAtTimeX=(severeCasesByRequestedTime,totalHospitalBeds)=>{
-         hospitalBedsByRequestedTime= impact.severeCasesByRequestedTime - (totalHospitalBeds *(0.35))
-         hospitalBedsByRequestedTime= severeImpact.severeCasesByRequestedTime - (totalHospitalBeds *(0.35))
+         hospitalBedsByRequestedTime= severeCasesByRequestedTime.impact - (totalHospitalBeds *(0.35))
+         hospitalBedsByRequestedTime= severeCasesByRequestedTime.severeImpact - (totalHospitalBeds *(0.35))
          return{
             impact:hospitalBedsByRequestedTime,
             severeImpact:hospitalBedsByRequestedTime
@@ -46,16 +46,16 @@ dollarsInFlight= dollarsInFlightForEconomyX(avgDailyIncomeInUSD,data.timeToElaps
 
       }
     const casesForIcuAtTimeX=(infectionsByRequestedTime)=>{
-casesForICUByRequestedTime=impact.severeCasesByRequestedTime*(0.05)
-casesForICUByRequestedTime=severeImpact.severeCasesByRequestedTime*(0.05)
+casesForICUByRequestedTime=severeCasesByRequestedTime.impact*(0.05)
+casesForICUByRequestedTime=severeCasesByRequestedTime.severeImpact*(0.05)
 return{
    impact:casesForICUByRequestedTime,
    severeImpact:casesForICUByRequestedTime
 }
       }
     const casesForVentilatorsAtTimeX=()=>{
-      casesForVentilatorsByRequestedTime=impact.severeCasesByRequestedTime*(0.02)
-      casesForVentilatorsByRequestedTime=severeImpact.severeCasesByRequestedTime*(0.02)
+      casesForVentilatorsByRequestedTime=severeCasesByRequestedTime.impact*(0.02)
+      casesForVentilatorsByRequestedTime=severeCasesByRequestedTime.severeImpact*(0.02)
       return{
          impact:casesForVentilatorsByRequestedTime,
          severeImpact:casesForVentilatorsByRequestedTime
@@ -63,8 +63,8 @@ return{
 
     }
     const dollarsInFlightForEconomyX =(avgDailyIncomeInUSD,avgDailyIncomePopulation)=>{
-       dollarsInFlight=impact.infectionsByRequestedTime*avgDailyIncomePopulation*(avgDailyIncomeInUSD*timeToElapse)
-       dollarsInFlight=severeImpact.infectionsByRequestedTime*avgDailyIncomePopulation*(avgDailyIncomeInUSD*timeToElapse)
+       dollarsInFlight=infectionsByRequestedTime.impact *avgDailyIncomePopulation*(avgDailyIncomeInUSD*timeToElapse)
+       dollarsInFlight=infectionsByRequestedTime.severeImpact *avgDailyIncomePopulation*(avgDailyIncomeInUSD*timeToElapse)
        return{
           impact:dollarsInFlight,
           severeImpact:dollarsInFlight
